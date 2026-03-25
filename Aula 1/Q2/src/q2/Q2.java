@@ -27,7 +27,7 @@ public class Q2 {
         
         System.out.println("Digite sua altura: ");
         double altura = sca.nextDouble();
-        
+
         System.out.println("Sua altura: "+altura);
         System.out.println("Seu nome: "+nome);
         System.out.println("Sua Idade: "+idade);
