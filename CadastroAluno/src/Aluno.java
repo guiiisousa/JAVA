@@ -7,7 +7,7 @@
  *
  * @author Aluno
  */
-public class Aluno {
+public class Aluno{
     private int Matricula;
     private String Nome;
     private String Curso;

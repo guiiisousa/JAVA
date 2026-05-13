@@ -1,3 +1,8 @@
+
+import java.io.IOException;
+import java.util.List;
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -14,8 +19,23 @@ public class TelaCadastro extends javax.swing.JFrame {
     /**
      * Creates new form TelaCadastro
      */
-    public TelaCadastro() {
+    public TelaCadastro(){
         initComponents();
+        try{  
+        
+        
+        GerenciarArquivos gerenciar = new GerenciarArquivos();  
+        List<Aluno> listaAluno = gerenciar.carregarDadosDaPlanilha("Alunos.csv");
+        
+            for (Aluno aluno : listaAluno) {
+                Tela.append(aluno.toString()+"\n");
+            }
+        
+        }
+        catch (IOException e){
+            JOptionPane.showMessageDialog(null, "Não existe esse arquivo");
+        }
+        
     }
     
     /**
@@ -28,14 +48,14 @@ public class TelaCadastro extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        Tela = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        Tela.setColumns(20);
+        Tela.setRows(5);
+        jScrollPane1.setViewportView(Tela);
 
         jLabel1.setText("Lista de Alunos:");
 
@@ -46,8 +66,8 @@ public class TelaCadastro extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
                 .addContainerGap(137, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -55,9 +75,9 @@ public class TelaCadastro extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
 
         pack();
@@ -89,8 +109,8 @@ public class TelaCadastro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea Tela;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }
